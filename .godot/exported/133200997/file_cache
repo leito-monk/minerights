@@ -1,0 +1,6 @@
+res://scenes/main.tscn::b2531ac31b07529ef94de428fab577b6::1763737665::res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn
+res://scenes/npc.tscn::e6f09cde314494027e9f5d4efd71ce2f::1763737665::res://.godot/exported/133200997/export-51652f9d5c9453037b2bf9159a453860-npc.scn
+res://scenes/player.tscn::c4b455c5b86f5d8e4b1a9a0b833acd5b::1763737665::res://.godot/exported/133200997/export-234fb6894ec6226e856ab7f825500d3d-player.scn
+res://ui/dialog_ui.tscn::4107fe248a393955865149bc8759fce5::1763737665::res://.godot/exported/133200997/export-ec3432ef00e00caf26923879fc443c83-dialog_ui.scn
+res://ui/instructions_ui.tscn::eb1f6e14d2bb09cef3b78db870d04787::1763737665::res://.godot/exported/133200997/export-f00b371c0963d6fdb448b224e1ad2fd6-instructions_ui.scn
+res://ui/touch_controls.tscn::2d33b2d55a3d02fefda13f44f3b96520::1763737665::res://.godot/exported/133200997/export-e0c95671a618e7177a075bda3a8bd183-touch_controls.scn

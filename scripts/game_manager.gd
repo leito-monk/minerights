@@ -35,6 +35,7 @@ func _ready() -> void:
 ## Maneja la interacción del jugador con un NPC
 func _on_player_interacted_with_npc(npc: Node3D) -> void:
 	if not npc or not npc.has_method("get_dialog_data"):
+		push_warning("Intento de interacción con NPC inválido")
 		return
 	
 	# Obtener datos del diálogo

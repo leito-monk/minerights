@@ -9,7 +9,7 @@ extends CharacterBody3D
 const SPEED = 5.0
 const ROTATION_SPEED = 10.0
 
-# Referencia al NPC más cercano con el que se puede interactir
+# Referencia al NPC más cercano con el que se puede interactuar
 var nearby_npc: Node3D = null
 
 # Señal emitida cuando el jugador interactúa con un NPC

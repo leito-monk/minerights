@@ -19,7 +19,8 @@ func _ready() -> void:
 	if mesh_instance:
 		var material = StandardMaterial3D.new()
 		material.albedo_color = npc_color
-		# Estética low-poly: sin suavizado
+		# Estética low-poly: sin suavizado de iluminación
+		# UNSHADED mantiene colores puros y refuerza el estilo low-poly simple
 		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 		mesh_instance.set_surface_override_material(0, material)
 	

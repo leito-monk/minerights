@@ -35,17 +35,11 @@ func show_dialog(npc_name: String, npc_message: String) -> void:
 		message_label.text = npc_message
 	
 	visible = true
-	
-	# Pausar el juego mientras se muestra el diálogo (opcional)
-	# get_tree().paused = true
 
 
 ## Oculta el diálogo
 func hide_dialog() -> void:
 	visible = false
-	
-	# Reanudar el juego
-	# get_tree().paused = false
 
 
 ## Callback del botón de cerrar

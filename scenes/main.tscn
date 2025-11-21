@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://coep3hdyhwv0n"]
+[gd_scene load_steps=9 format=3 uid="uid://coep3hdyhwv0n"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_1mgfk"]
 [ext_resource type="PackedScene" uid="uid://c6yjpjbkdw0h0" path="res://scenes/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://djyp4qxu4vjp7" path="res://scenes/npc.tscn" id="3_npc"]
 [ext_resource type="PackedScene" uid="uid://bscq1pqbpvt4v" path="res://ui/dialog_ui.tscn" id="4_dialog"]
 [ext_resource type="PackedScene" uid="uid://da7wl0d6o8xj6" path="res://ui/instructions_ui.tscn" id="5_instructions"]
+[ext_resource type="Script" path="res://scripts/camera_follow.gd" id="6_camera"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_plaza"]
 size = Vector2(30, 30)
@@ -38,7 +39,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5, 7, 5)
 fov = 60.0
-script = ExtResource("res://scripts/camera_follow.gd")
+script = ExtResource("6_camera")
 target = NodePath("../Player")
 
 [node name="NPCs" type="Node3D" parent="."]

@@ -24,7 +24,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Obtener input del jugador
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	var direction := Vector3(input_dir.x, 0, input_dir.y).normalized()
+	var direction := Vector3(input_dir.x, 0, -input_dir.y).normalized()
 	
 	# Aplicar movimiento
 	if direction:

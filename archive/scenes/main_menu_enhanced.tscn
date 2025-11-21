@@ -1,0 +1,282 @@
+[gd_scene load_steps=5 format=3 uid="uid://enhanced_menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/main_menu_enhanced.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_title_bg"]
+bg_color = Color(0.1, 0.15, 0.3, 0.8)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel_bg"]
+bg_color = Color(0.15, 0.2, 0.35, 0.9)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.4, 0.6, 0.8)
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.7, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.6, 0.9, 1)
+
+[node name="MainMenuEnhanced" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.1, 0.2, 1)
+
+[node name="BackgroundPattern" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ParticleLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Particles" type="Control" parent="ParticleLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundLayer"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+alignment = 1
+
+[node name="TitleContainer" type="Panel" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_title_bg")
+
+[node name="TitleVBox" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer/TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+alignment = 1
+
+[node name="GameTitle" type="Label" parent="BackgroundLayer/VBoxContainer/TitleContainer/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 48
+text = "🏠 MINERIGHTS ⚒️"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="BackgroundLayer/VBoxContainer/TitleContainer/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 18
+text = "Juego de Organización Comunitaria y Conquista de Derechos"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MechanicsPanel" type="Panel" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel_bg")
+
+[node name="MechanicsVBox" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = -25.0
+offset_bottom = -25.0
+
+[node name="ObjectiveTitle" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 24
+text = "🎯 OBJETIVO DEL JUEGO"
+horizontal_alignment = 1
+
+[node name="ObjectiveDesc" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "Organiza a la comunidad para conquistar los 4 derechos fundamentales:
+🏥 Salud  |  📚 Educación  |  🏠 Vivienda  |  ⚒️ Trabajo Digno"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HowToPlayTitle" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "⚙️ CÓMO JUGAR"
+horizontal_alignment = 1
+
+[node name="StepsGrid" type="GridContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+columns = 1
+
+[node name="Step1" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid"]
+layout_mode = 2
+
+[node name="StepIcon" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "1️⃣"
+size_flags_horizontal = 0
+
+[node name="StepText" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "EXPLORA: Muévete con WASD. Busca personas vulnerables de la comunidad."
+autowrap_mode = 2
+
+[node name="Step2" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid"]
+layout_mode = 2
+
+[node name="StepIcon" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "2️⃣"
+size_flags_horizontal = 0
+
+[node name="StepText" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "CONTACTA: Presiona E cerca de las personas para conocer sus problemáticas."
+autowrap_mode = 2
+
+[node name="Step3" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid"]
+layout_mode = 2
+
+[node name="StepIcon" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "3️⃣"
+size_flags_horizontal = 0
+
+[node name="StepText" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "ORGANIZA: Ve a zonas azules después de contactar 3+ personas del mismo tipo."
+autowrap_mode = 2
+
+[node name="Step4" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid"]
+layout_mode = 2
+
+[node name="StepIcon" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "4️⃣"
+size_flags_horizontal = 0
+
+[node name="StepText" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "ACTÚA: Ejecuta acciones colectivas (Marchas, Huelgas, Festivales)."
+autowrap_mode = 2
+
+[node name="Step5" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid"]
+layout_mode = 2
+
+[node name="StepIcon" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.6, 0.2, 1)
+theme_override_font_sizes/font_size = 18
+text = "5️⃣"
+size_flags_horizontal = 0
+
+[node name="StepText" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox/StepsGrid/Step5"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+text = "CONQUISTA: Llena la barra de presión social hasta 100% para cada derecho."
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ButtonContainer" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="StartButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "🚀 COMENZAR A ORGANIZAR"
+
+[node name="ButtonSpacer" type="Control" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 10)
+
+[node name="SecondaryButtons" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer/SecondaryButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "📝 Créditos"
+
+[node name="QuitButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer/SecondaryButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "🚪 Salir"

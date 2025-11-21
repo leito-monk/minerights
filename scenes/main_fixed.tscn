@@ -1,0 +1,268 @@
+[gd_scene load_steps=11 format=3 uid="uid://coep3hdyhwv0n"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_1mgfk"]
+[ext_resource type="Script" path="res://scripts/player_fixed.gd" id="2_player_script"]
+[ext_resource type="PackedScene" uid="uid://djyp4qxu4vjp7" path="res://scenes/npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" uid="uid://meeting_node_scene" path="res://scenes/meeting_node.tscn" id="3_meeting"]
+[ext_resource type="PackedScene" uid="uid://bscq1pqbpvt4v" path="res://ui/dialog_ui.tscn" id="4_dialog"]
+[ext_resource type="PackedScene" uid="uid://da7wl0d6o8xj6" path="res://ui/instructions_ui.tscn" id="5_instructions"]
+[ext_resource type="PackedScene" uid="uid://organization_ui_scene" path="res://ui/organization_ui.tscn" id="6_org_ui"]
+[ext_resource type="PackedScene" uid="uid://collective_actions_scene" path="res://ui/collective_actions_ui.tscn" id="7_actions_ui"]
+[ext_resource type="PackedScene" uid="uid://rights_progress_scene" path="res://ui/rights_progress_ui.tscn" id="8_rights_ui"]
+[ext_resource type="Script" path="res://scripts/world_transformation.gd" id="9_world_transform"]
+[ext_resource type="Script" path="res://scripts/camera_follow.gd" id="6_camera"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_plaza"]
+size = Vector2(30, 30)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plaza"]
+albedo_color = Color(0.4, 0.6, 0.4, 1)
+shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(30, 0.1, 30)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_player"]
+radius = 0.5
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_player"]
+albedo_color = Color(0.2, 0.5, 0.8, 1)
+shading_mode = 0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_player"]
+radius = 0.5
+height = 2.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_detection"]
+radius = 2.5
+
+[node name="Main" type="Node3D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_1mgfk")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, -0.75, 0.433013, 0, 10, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+
+[node name="Plaza" type="Node3D" parent="."]
+
+[node name="Ground" type="StaticBody3D" parent="Plaza"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plaza/Ground"]
+mesh = SubResource("PlaneMesh_plaza")
+surface_material_override/0 = SubResource("StandardMaterial3D_plaza")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza/Ground"]
+shape = SubResource("BoxShape3D_ground")
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+script = ExtResource("2_player_script")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+mesh = SubResource("CapsuleMesh_player")
+surface_material_override/0 = SubResource("StandardMaterial3D_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("CapsuleShape3D_player")
+
+[node name="DetectionArea" type="Area3D" parent="Player"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/DetectionArea"]
+shape = SubResource("SphereShape3D_detection")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 5, 7, 5)
+fov = 60.0
+script = ExtResource("6_camera")
+target = NodePath("../Player")
+
+[node name="NPCs" type="Node3D" parent="."]
+
+# NPCs - Categoría TRABAJO PRECARIO
+[node name="NPC_Trabajo_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -8)
+npc_name = "María Trabajadora"
+npc_message = "Trabajo 12 horas diarias en la fábrica sin contrato fijo. Necesitamos organizarnos para conseguir derechos laborales básicos."
+npc_category = 0
+npc_id = "trabajo_01"
+
+[node name="NPC_Trabajo_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -4)
+npc_name = "Carlos Obrero"
+npc_message = "Mi jefe me amenaza si hablo de sindicatos. Pero juntos podemos cambiar esta situación."
+npc_category = 0
+npc_id = "trabajo_02"
+
+[node name="NPC_Trabajo_03" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -2)
+npc_name = "Ana Empleada"
+npc_message = "Sin seguridad social ni vacaciones, vivimos en la precariedad total."
+npc_category = 0
+npc_id = "trabajo_03"
+
+[node name="NPC_Trabajo_04" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 0)
+npc_name = "Pedro Jornalero"
+npc_message = "Cada día es incierto, no sé si tendré trabajo mañana."
+npc_category = 0
+npc_id = "trabajo_04"
+
+# NPCs - Categoría SIN VIVIENDA
+[node name="NPC_Vivienda_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -8)
+npc_name = "Juan Sin Hogar"
+npc_message = "Los alquileres suben pero los salarios no. Necesitamos vivienda digna y asequible."
+npc_category = 1
+npc_id = "vivienda_01"
+
+[node name="NPC_Vivienda_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -4)
+npc_name = "Laura Inquilina"
+npc_message = "Vivo en condiciones insalubres porque no tengo más opciones."
+npc_category = 1
+npc_id = "vivienda_02"
+
+[node name="NPC_Vivienda_03" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -2)
+npc_name = "Roberto Desahuciado"
+npc_message = "Me echaron de casa y ahora no encuentro nada que pueda pagar."
+npc_category = 1
+npc_id = "vivienda_03"
+
+[node name="NPC_Vivienda_04" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 0)
+npc_name = "Sofia Madre"
+npc_message = "Con tres hijos, necesito un hogar estable y seguro."
+npc_category = 1
+npc_id = "vivienda_04"
+
+# NPCs - Categoría SIN SALUD
+[node name="NPC_Salud_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 8)
+npc_name = "Carmen Enferma"
+npc_message = "Llevo meses esperando una cita médica. Mi salud empeora cada día."
+npc_category = 2
+npc_id = "salud_01"
+
+[node name="NPC_Salud_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, 4)
+npc_name = "Miguel Diabético"
+npc_message = "No puedo costear la insulina que necesito para vivir."
+npc_category = 2
+npc_id = "salud_02"
+
+[node name="NPC_Salud_03" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 2)
+npc_name = "Elena Cuidadora"
+npc_message = "Mi madre necesita cuidados que no podemos pagar."
+npc_category = 2
+npc_id = "salud_03"
+
+[node name="NPC_Salud_04" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1, 6)
+npc_name = "Jorge Accidentado"
+npc_message = "El accidente laboral me dejó sin cobertura médica."
+npc_category = 2
+npc_id = "salud_04"
+
+# NPCs - Categoría SIN EDUCACIÓN
+[node name="NPC_Educacion_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 8)
+npc_name = "Lucia Estudiante"
+npc_message = "Quiero estudiar pero las tasas son demasiado altas para mi familia."
+npc_category = 3
+npc_id = "educacion_01"
+
+[node name="NPC_Educacion_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 4)
+npc_name = "David Desertor"
+npc_message = "Tuve que dejar los estudios para trabajar y mantener a mi familia."
+npc_category = 3
+npc_id = "educacion_02"
+
+[node name="NPC_Educacion_03" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 2)
+npc_name = "Patricia Maestra"
+npc_message = "En mi escuela faltan recursos básicos para enseñar dignamente."
+npc_category = 3
+npc_id = "educacion_03"
+
+[node name="NPC_Educacion_04" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 1, 6)
+npc_name = "Antonio Adulto"
+npc_message = "Nunca pude terminar mis estudios, ahora es muy difícil encontrar trabajo."
+npc_category = 3
+npc_id = "educacion_04"
+
+# NPCs Mixtos Adicionales
+[node name="NPC_Activista_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+npc_name = "Rosa Activista"
+npc_message = "La organización popular es nuestra única herramienta de cambio."
+npc_category = 0
+npc_id = "activista_01"
+
+[node name="NPC_Activista_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12)
+npc_name = "Manuel Veterano"
+npc_message = "He luchado toda mi vida por los derechos sociales."
+npc_category = 1
+npc_id = "activista_02"
+
+[node name="NPC_Joven_01" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 8)
+npc_name = "Alex Joven"
+npc_message = "Sin oportunidades de estudio o trabajo digno, ¿qué futuro nos espera?"
+npc_category = 3
+npc_id = "joven_01"
+
+[node name="NPC_Joven_02" parent="NPCs" instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 8)
+npc_name = "Sara Precaria"
+npc_message = "Trabajo en varios empleos pero aún no llego a fin de mes."
+npc_category = 0
+npc_id = "joven_02"
+
+[node name="MeetingNodes" type="Node3D" parent="."]
+
+[node name="PlazaCentral" parent="MeetingNodes" instance=ExtResource("3_meeting")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+node_name = "Plaza Central"
+node_type = "plaza"
+
+[node name="CentroComunitario" parent="MeetingNodes" instance=ExtResource("3_meeting")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0.1, 15)
+node_name = "Centro Comunitario"
+node_type = "centro_comunitario"
+
+[node name="ParquePopular" parent="MeetingNodes" instance=ExtResource("3_meeting")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0.1, -15)
+node_name = "Parque Popular"
+node_type = "parque"
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogUI" parent="UI" instance=ExtResource("4_dialog")]
+visible = false
+
+[node name="InstructionsUI" parent="UI" instance=ExtResource("5_instructions")]
+
+[node name="OrganizationUI" parent="UI" instance=ExtResource("6_org_ui")]
+
+[node name="CollectiveActionsUI" parent="UI" instance=ExtResource("7_actions_ui")]
+
+[node name="RightsProgressUI" parent="UI" instance=ExtResource("8_rights_ui")]
+
+[node name="WorldTransformation" type="Node3D" parent="."]
+script = ExtResource("9_world_transform")
+
+[connection signal="area_entered" from="Player/DetectionArea" to="Player" method="_on_detection_area_entered"]
+[connection signal="area_exited" from="Player/DetectionArea" to="Player" method="_on_detection_area_exited"]
+[connection signal="interacted_with_npc" from="Player" to="GameManager" method="_on_player_interacted_with_npc"]

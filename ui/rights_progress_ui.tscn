@@ -1,0 +1,81 @@
+[gd_scene load_steps=2 format=3 uid="uid://rights_progress_scene"]
+
+[ext_resource type="Script" path="res://scripts/rights_progress_ui.gd" id="1_script"]
+
+[node name="RightsProgressUI" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -320.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 400.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.2, 0.1, 0.1, 0.8)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "CONQUISTA DE DERECHOS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PressureContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="PressureLabel" type="Label" parent="VBoxContainer/PressureContainer"]
+layout_mode = 2
+text = "Presión Social: 0%"
+horizontal_alignment = 1
+
+[node name="PressureBar" type="ProgressBar" parent="VBoxContainer/PressureContainer"]
+layout_mode = 2
+min_value = 0.0
+max_value = 100.0
+value = 0.0
+show_percentage = false
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CurrentRightLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Objetivo actual: Derecho a la Salud"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RightsTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "DERECHOS CONQUISTADOS:"
+horizontal_alignment = 1
+
+[node name="RightsList" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ConquestAnimation" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "¡DERECHO CONQUISTADO!"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,259 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_script"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 32
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.15, 0.25, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 30.0
+offset_right = -50.0
+offset_bottom = -30.0
+
+[node name="TitleContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="GameTitle" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "MINERIGHTS"
+label_settings = SubResource("LabelSettings_title")
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "Juego de Organizacion Comunitaria y Conquista de Derechos"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MechanicsContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ObjectiveTitle" type="Label" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+text = ">> OBJETIVO DEL JUEGO"
+horizontal_alignment = 1
+
+[node name="ObjectiveText" type="Label" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+text = "Organiza a la comunidad para conquistar 4 derechos fundamentales:
+SALUD  |  EDUCACION  |  VIVIENDA  |  TRABAJO DIGNO"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="MechanicsTitle" type="Label" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+text = ">> COMO JUGAR"
+horizontal_alignment = 1
+
+[node name="Step1" type="HBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="Step1Icon" type="Label" parent="VBoxContainer/MechanicsContainer/Step1"]
+layout_mode = 2
+text = "1."
+size_flags_horizontal = 0
+
+[node name="Step1Text" type="Label" parent="VBoxContainer/MechanicsContainer/Step1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EXPLORA: Muévete con WASD por el mundo. Busca a las personas vulnerables de la comunidad."
+autowrap_mode = 2
+
+[node name="Step2" type="HBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="Step2Icon" type="Label" parent="VBoxContainer/MechanicsContainer/Step2"]
+layout_mode = 2
+text = "2."
+size_flags_horizontal = 0
+
+[node name="Step2Text" type="Label" parent="VBoxContainer/MechanicsContainer/Step2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONTACTA: Presiona E cerca de las personas para conocer sus problemáticas y crear vínculos."
+autowrap_mode = 2
+
+[node name="Step3" type="HBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="Step3Icon" type="Label" parent="VBoxContainer/MechanicsContainer/Step3"]
+layout_mode = 2
+text = "3."
+size_flags_horizontal = 0
+
+[node name="Step3Text" type="Label" parent="VBoxContainer/MechanicsContainer/Step3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ORGANIZA: Ve a las zonas azules (plazas) después de contactar 3+ personas del mismo tipo. Se formarán grupos automáticamente."
+autowrap_mode = 2
+
+[node name="Step4" type="HBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="Step4Icon" type="Label" parent="VBoxContainer/MechanicsContainer/Step4"]
+layout_mode = 2
+text = "4."
+size_flags_horizontal = 0
+
+[node name="Step4Text" type="Label" parent="VBoxContainer/MechanicsContainer/Step4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ACTÚA: Ejecuta acciones colectivas (Marchas, Asambleas, Huelgas, Festivales) desde el panel izquierdo."
+autowrap_mode = 2
+
+[node name="Step5" type="HBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="Step5Icon" type="Label" parent="VBoxContainer/MechanicsContainer/Step5"]
+layout_mode = 2
+text = "5."
+size_flags_horizontal = 0
+
+[node name="Step5Text" type="Label" parent="VBoxContainer/MechanicsContainer/Step5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CONQUISTA: Llena la barra de presión social (panel derecho) hasta 100% para conquistar cada derecho."
+autowrap_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="CategoriesTitle" type="Label" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+text = ">> TIPOS DE PERSONAS QUE ENCONTRARAS"
+horizontal_alignment = 1
+
+[node name="CategoriesGrid" type="GridContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Cat1" type="VBoxContainer" parent="VBoxContainer/MechanicsContainer/CategoriesGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cat1Title" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat1"]
+layout_mode = 2
+text = "TRABAJO PRECARIO"
+horizontal_alignment = 1
+
+[node name="Cat1Desc" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat1"]
+layout_mode = 2
+text = "Personas sin estabilidad laboral, subempleos, falta de derechos laborales"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Cat2" type="VBoxContainer" parent="VBoxContainer/MechanicsContainer/CategoriesGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cat2Title" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat2"]
+layout_mode = 2
+text = "SIN VIVIENDA"
+horizontal_alignment = 1
+
+[node name="Cat2Desc" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat2"]
+layout_mode = 2
+text = "Personas en situación habitacional precaria, sin hogar digno"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Cat3" type="VBoxContainer" parent="VBoxContainer/MechanicsContainer/CategoriesGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cat3Title" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat3"]
+layout_mode = 2
+text = "SIN SALUD"
+horizontal_alignment = 1
+
+[node name="Cat3Desc" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat3"]
+layout_mode = 2
+text = "Personas sin acceso a atencion medica de calidad"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="Cat4" type="VBoxContainer" parent="VBoxContainer/MechanicsContainer/CategoriesGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Cat4Title" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat4"]
+layout_mode = 2
+text = "SIN EDUCACION"
+horizontal_alignment = 1
+
+[node name="Cat4Desc" type="Label" parent="VBoxContainer/MechanicsContainer/CategoriesGrid/Cat4"]
+layout_mode = 2
+text = "Personas sin acceso a educacion de calidad o formacion"
+autowrap_mode = 2
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="TipContainer" type="VBoxContainer" parent="VBoxContainer/MechanicsContainer"]
+layout_mode = 2
+
+[node name="TipTitle" type="Label" parent="VBoxContainer/MechanicsContainer/TipContainer"]
+layout_mode = 2
+text = ">> CONSEJOS ESTRATEGICOS"
+horizontal_alignment = 1
+
+[node name="Tip1" type="Label" parent="VBoxContainer/MechanicsContainer/TipContainer"]
+layout_mode = 2
+text = "* Contacta personas de TODAS las categorias para construir un movimiento diverso"
+
+[node name="Tip2" type="Label" parent="VBoxContainer/MechanicsContainer/TipContainer"]
+layout_mode = 2
+text = "* Las acciones mas grandes requieren mas grupos organizados y mas contactos"
+
+[node name="Tip3" type="Label" parent="VBoxContainer/MechanicsContainer/TipContainer"]
+layout_mode = 2
+text = "* Cada derecho conquistado transforma visualmente el mundo - observa los cambios!"
+
+[node name="Tip4" type="Label" parent="VBoxContainer/MechanicsContainer/TipContainer"]
+layout_mode = 2
+text = "* La organizacion es un proceso gradual - ten paciencia y constancia"
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "COMENZAR A ORGANIZAR"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+text = "Creditos"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer/ButtonContainer"]
+layout_mode = 2
+text = "Salir"

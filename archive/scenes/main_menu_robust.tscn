@@ -1,0 +1,171 @@
+[gd_scene load_steps=4 format=3 uid="uid://robust_menu_scene"]
+
+[ext_resource type="Script" path="res://scripts/main_menu_enhanced.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.1, 0.15, 0.3, 0.85)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.4, 0.6, 0.8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+bg_color = Color(0.2, 0.4, 0.7, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MainMenuEnhanced" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_script")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.1, 0.2, 1)
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackgroundLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+
+[node name="TitleContainer" type="Panel" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TitleVBox" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer/TitleContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="GameTitle" type="Label" parent="BackgroundLayer/VBoxContainer/TitleContainer/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 42
+text = "🏠 MINERIGHTS ⚒️"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="BackgroundLayer/VBoxContainer/TitleContainer/TitleVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "Juego de Organización Comunitaria y Conquista de Derechos"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="VSeparator" type="Control" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="MechanicsPanel" type="Panel" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="MechanicsVBox" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer/MechanicsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="ObjectiveTitle" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
+theme_override_font_sizes/font_size = 22
+text = "🎯 OBJETIVO: Conquistar los 4 Derechos Fundamentales"
+horizontal_alignment = 1
+
+[node name="RightsList" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 16
+text = "🏥 Derecho a la Salud  |  📚 Derecho a la Educación  |  🏠 Derecho a la Vivienda  |  ⚒️ Derecho al Trabajo Digno"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HowToPlayTitle" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.8, 1, 1)
+theme_override_font_sizes/font_size = 18
+text = "⚙️ CÓMO JUGAR:"
+horizontal_alignment = 1
+
+[node name="InstructionsList" type="Label" parent="BackgroundLayer/VBoxContainer/MechanicsPanel/MechanicsVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 14
+text = "1️⃣ EXPLORA: Muévete con WASD y busca personas vulnerables
+2️⃣ CONTACTA: Presiona E cerca de las personas para conocer sus problemáticas
+3️⃣ ORGANIZA: Ve a zonas azules después de contactar 3+ personas del mismo tipo
+4️⃣ ACTÚA: Ejecuta acciones colectivas (Marchas, Asambleas, Huelgas, Festivales)
+5️⃣ CONQUISTA: Llena la barra de presión social hasta 100% para cada derecho"
+autowrap_mode = 2
+
+[node name="VSeparator2" type="Control" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 20)
+
+[node name="ButtonContainer" type="VBoxContainer" parent="BackgroundLayer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="StartButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+text = "🚀 COMENZAR A ORGANIZAR"
+custom_minimum_size = Vector2(300, 50)
+
+[node name="ButtonSpacer" type="Control" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 15)
+
+[node name="SecondaryButtons" type="HBoxContainer" parent="BackgroundLayer/VBoxContainer/ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer/SecondaryButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "📝 Créditos"
+custom_minimum_size = Vector2(120, 35)
+
+[node name="QuitButton" type="Button" parent="BackgroundLayer/VBoxContainer/ButtonContainer/SecondaryButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "🚪 Salir"
+custom_minimum_size = Vector2(120, 35)

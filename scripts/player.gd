@@ -50,6 +50,10 @@ func _input(event: InputEvent) -> void:
 	# Detectar input de interacción (tecla E)
 	if event.is_action_pressed("interact") and nearby_npc != null:
 		emit_signal("interacted_with_npc", nearby_npc)
+	
+	# Detectar ESC para volver al menú (delegamos al GameManager)
+	if event.is_action_pressed("ui_cancel"):
+		get_node("../GameManager").return_to_main_menu()
 
 
 ## Método llamado por el área de detección cuando un NPC entra en rango

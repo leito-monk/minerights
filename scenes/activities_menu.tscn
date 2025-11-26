@@ -1,0 +1,134 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8xh9k2v3m7w"]
+
+[ext_resource type="Script" path="res://scripts/activities_menu.gd" id="1_activities"]
+
+[node name="ActivitiesMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+visible = false
+script = ExtResource("1_activities")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.15, 0.1, 0.25, 0.9)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "ORGANIZAR ACTIVIDADES EDUCATIVAS"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActivitiesList" type="VBoxContainer" parent="Panel/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Activity1" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Taller sobre Derecho a la Educación"
+
+[node name="OrganizeBtn1" type="Button" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity1"]
+layout_mode = 2
+text = "Organizar"
+
+[node name="Activity2" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Charla sobre Derecho a la Salud"
+
+[node name="OrganizeBtn2" type="Button" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity2"]
+layout_mode = 2
+text = "Organizar"
+
+[node name="Activity3" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mesa Redonda sobre Derechos Laborales"
+
+[node name="OrganizeBtn3" type="Button" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity3"]
+layout_mode = 2
+text = "Organizar"
+
+[node name="Activity4" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Foro sobre Derecho a la Vivienda"
+
+[node name="OrganizeBtn4" type="Button" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity4"]
+layout_mode = 2
+text = "Organizar"
+
+[node name="Activity5" type="HBoxContainer" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Debate sobre Libertad de Expresión"
+
+[node name="OrganizeBtn5" type="Button" parent="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity5"]
+layout_mode = 2
+text = "Organizar"
+
+[node name="HSeparator2" type="HSeparator" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer/ButtonsContainer"]
+layout_mode = 2
+text = "Cerrar"
+
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity1/OrganizeBtn1" to="." method="_on_organize_activity" binds= ["educacion"]]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity2/OrganizeBtn2" to="." method="_on_organize_activity" binds= ["salud"]]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity3/OrganizeBtn3" to="." method="_on_organize_activity" binds= ["trabajo"]]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity4/OrganizeBtn4" to="." method="_on_organize_activity" binds= ["vivienda"]]
+[connection signal="pressed" from="Panel/VBoxContainer/ScrollContainer/ActivitiesList/Activity5/OrganizeBtn5" to="." method="_on_organize_activity" binds= ["libertad"]]
+[connection signal="pressed" from="Panel/VBoxContainer/ButtonsContainer/CloseButton" to="." method="_on_close_button_pressed"]

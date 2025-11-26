@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://coep3hdyhwv0n"]
+[gd_scene load_steps=11 format=3 uid="uid://coep3hdyhwv0n"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_1mgfk"]
 [ext_resource type="PackedScene" uid="uid://c6yjpjbkdw0h0" path="res://scenes/player.tscn" id="2_player"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bscq1pqbpvt4v" path="res://ui/dialog_ui.tscn" id="4_dialog"]
 [ext_resource type="PackedScene" uid="uid://da7wl0d6o8xj6" path="res://ui/instructions_ui.tscn" id="5_instructions"]
 [ext_resource type="Script" path="res://scripts/camera_follow.gd" id="6_camera"]
+[ext_resource type="PackedScene" uid="uid://bw8xh3k5v2m8w" path="res://scenes/main_menu.tscn" id="7_main_menu"]
+[ext_resource type="PackedScene" uid="uid://c8xh9k2v3m7w" path="res://scenes/activities_menu.tscn" id="8_activities"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_plaza"]
 size = Vector2(30, 30)
@@ -13,6 +15,9 @@ size = Vector2(30, 30)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plaza"]
 albedo_color = Color(0.4, 0.6, 0.4, 1)
 shading_mode = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(30, 1, 30)
 
 [node name="Main" type="Node3D"]
 
@@ -29,9 +34,14 @@ shadow_enabled = true
 
 [node name="Plaza" type="Node3D" parent="."]
 
-[node name="Ground" type="MeshInstance3D" parent="Plaza"]
+[node name="Ground" type="StaticBody3D" parent="Plaza"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plaza/Ground"]
 mesh = SubResource("PlaneMesh_plaza")
 surface_material_override/0 = SubResource("StandardMaterial3D_plaza")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Plaza/Ground"]
+shape = SubResource("BoxShape3D_ground")
 
 [node name="Player" parent="." instance=ExtResource("2_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -80,3 +90,7 @@ npc_color = Color(0.8, 0.3, 0.8, 1)
 visible = false
 
 [node name="InstructionsUI" parent="UI" instance=ExtResource("5_instructions")]
+
+[node name="MainMenu" parent="UI" instance=ExtResource("7_main_menu")]
+
+[node name="ActivitiesMenu" parent="UI" instance=ExtResource("8_activities")]
